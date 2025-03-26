@@ -6,6 +6,10 @@ import InvalidToken from '../models/InvalidToken.js';
 
 export default {
     async register(userData) {
+        const existingUser = await User.findOne({ email: userData.email });
+        if (existingUser) {
+            throw new Error('Email is already in use!');
+        }
         const user = await User.create(userData)
 
         const token = generateToken(user);

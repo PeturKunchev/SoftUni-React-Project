@@ -42,3 +42,8 @@ a:active {
 .nav a:hover {
     color: rgba(255, 255, 255, 0.622);
 }
+.nav2{
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+}
