@@ -1,0 +1,33 @@
+/* Book item */
+.book-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    border: solid black 2px;
+  }
+  
+  .book-img {
+    width: 150px;
+    height: 225px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .book-details {
+    text-align: left;
+  }
+  
+  .book-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .book-author, .book-year, .book-price, .book-language {
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
