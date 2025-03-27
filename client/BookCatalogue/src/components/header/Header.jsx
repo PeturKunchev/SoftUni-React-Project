@@ -22,7 +22,6 @@ return (
                             <Link to="/login">Login</Link>
                             <Link to="/register">Register</Link>
                             </div>)}
-                            
                         </div>
             </nav>
      </header>

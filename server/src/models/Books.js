@@ -32,8 +32,9 @@ const bookSchema = new Schema({
     _ownerId: {
         type: Types.ObjectId,
         ref: 'User',
-    }
-});
+    },
+    
+},{ timestamps: true });
 
 const Book = model('Book', bookSchema);
 

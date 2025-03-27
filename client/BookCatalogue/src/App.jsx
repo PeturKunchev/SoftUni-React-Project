@@ -8,6 +8,7 @@ import Login from './components/login/Login.jsx'
 import { useState } from 'react'
 import { UserContext } from './contexts/UserContext.js'
 import Logout from './components/logout/Logout.jsx'
+import CreateBook from './components/create-book/createBook.jsx'
 
 function App() {
   const storedAuthData = JSON.parse(localStorage.getItem('authData')) || {};
@@ -31,9 +32,10 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/books/create" element={<CreateBook />} />
         </Routes>
       </main>
-    <Footer/>
+      <Footer/>
     </UserContext.Provider>
     </>
   )
