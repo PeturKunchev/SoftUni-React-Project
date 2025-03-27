@@ -26,7 +26,7 @@ userController.post('/register', async (req, res) => {
 
 userController.post('/login', async (req, res) => {
     const { email, password } = req.body;
-
+    try {
     const { user, token } = await userService.login(email, password)
 
     res.json({
@@ -34,6 +34,11 @@ userController.post('/login', async (req, res) => {
         accessToken: token,
         email: user.email,
     });
+    } catch (error) {
+        console.error('Login error:', error.message); // Optionally log the error for debugging
+        res.status(400).json({ message: error.message });
+    }
+    
 });
 
 userController.get('/logout', async (req, res) => {
