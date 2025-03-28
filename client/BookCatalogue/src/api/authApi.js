@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import requester from "../utils/requester.js";
 import { UserContext } from "../contexts/UserContext.js";
 
-const baseUrl = 'http://localhost:3030/users';
+const baseUrl = `${import.meta.env.VITE_BASE_URL}/users`;
 
 export const useLogin = () => {
     const login = async (email, password) =>

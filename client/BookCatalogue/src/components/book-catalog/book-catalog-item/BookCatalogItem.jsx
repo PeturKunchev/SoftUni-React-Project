@@ -1,18 +1,22 @@
+import { Link } from 'react-router'
 import './BookCatalogItem.css'
 export default function BookCatalogueItem(
-_id,
+{_id,
 title,
 author,
-price
+price,
+img}
 ) {
+
   return (
     <>
     <div className="book-item">
-      <img src="https://www.ciela.com/media/catalog/product/cache/9a7ceae8a5abbd0253425b80f9ef99a5/g/l/glina-soft-pres.jpg" alt="Book Cover" className="book-img" />
+      <img src={img} alt="Book Cover" className="book-img" />
       <div className="book-details">
-        <h3 className="book-title">The Great Gatsby</h3>
-        <p className="book-author">F. Scott Fitzgerald</p>
-        <p className="book-price">$10.99</p>
+        <h3 className="book-title">{title}</h3>
+        <p className="book-author">{author}</p>
+        <p className="book-price">${price}</p>
+        <Link to={`/books/${_id}/details`} className='details-button'>Details</Link>
       </div>
     </div>
     </>

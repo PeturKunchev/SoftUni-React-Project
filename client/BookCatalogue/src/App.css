@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Spice&family=Lemon&family=Lexend:wght@100..900&display=swap');
 body {
-  background-image: url('/background.jpg'); /* Path relative to the public folder */
-  background-size: cover; /* Adjusts the size to cover the screen */
-  background-position: center; /* Centers the image */
+  background-image: url('/background.jpg'); 
+  background-size: cover; 
+  background-position: center; 
   margin: 0;
   overflow-x: hidden;
 }
