@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 export default function CreateBook() {
   const navigate = useNavigate();
   const {create: createBook} = useCreateBook();
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -15,14 +16,31 @@ export default function CreateBook() {
     img: "",
     language: "",
 });
-  useEffect(()=>{
-    console.log("hui");
-    
-  },[formData])
+
   const createAction = async (formData) => {
     const bookData = Object.fromEntries(formData);
     setFormData(bookData);
-
+    if (bookData.title.length < 2) {
+      setError("Title must be at least 2 characters long!");
+      return;
+    }
+    if (bookData.author.length < 2) {
+      setError("Author name must be at least 2 characters long!");
+      return;
+    }
+    if (bookData.year >= 2026) {
+      setError("Please enter a valid year ");
+      return;
+    }
+    if (bookData.description.length < 2) {
+      setError("Description must be at least 10 characters long!");
+      return;
+    }
+    if (bookData.price < 0) {
+      setError("Please enter a valid price!");
+      return;
+    }
+    
     await createBook(bookData);
 
     navigate('/');
@@ -68,7 +86,7 @@ export default function CreateBook() {
         </div>
 
         <button type="submit" className="submit-btn">Create Book</button>
-        {/* {error && <p className="error-message">{error}</p>} */}
+        {error && <p className="error-message">{error}</p>}
       </form>
     </div>
     </>
