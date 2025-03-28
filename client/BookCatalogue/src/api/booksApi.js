@@ -31,9 +31,8 @@ export const useBook = (bookId) => {
 export const useCreateBook = () => {
     const { request } = useAuth();
 
-    const create = (bookData) =>
-        request.post(baseUrl, bookData);
-
+    const create = (bookData) => request.post(baseUrl, bookData);
+    
     return {
         create,
     }

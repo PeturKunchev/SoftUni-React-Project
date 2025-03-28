@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router'
 import './CreateBook.css'
 import { useCreateBook } from '../../api/booksApi';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function CreateBook() {
   const navigate = useNavigate();
@@ -42,8 +42,9 @@ export default function CreateBook() {
     }
     
     await createBook(bookData);
+    // console.log(bookData);
 
-    navigate('/');
+    navigate('/books');
   }
     return (
     <>

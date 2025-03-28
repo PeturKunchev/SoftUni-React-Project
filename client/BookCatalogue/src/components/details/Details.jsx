@@ -1,11 +1,29 @@
-import { useParams } from 'react-router';
-import { useBook } from '../../api/booksApi';
+import { useNavigate, useParams } from 'react-router';
+import { useBook, useDeleteBook } from '../../api/booksApi';
 import './Details.css'
 export default function Details() {
+    const navigate = useNavigate();
     const {bookId} = useParams();
     const {book} = useBook(bookId);
-    console.log(book);
+    const {deleteBook} = useDeleteBook();
+    const authData = localStorage.getItem('authData');
+    const userId = authData ? JSON.parse(authData)._id : null;
+    let isOwner = userId === book._ownerId;
+    const bookDeleteHandler = async () => {
+      const hasConfirm = confirm(`Are you sure?`);
+      if (!hasConfirm) {
+        return;
+      }
+      await deleteBook(bookId);
+
+      navigate('/books')
     
+    }
+
+    const handleEditClick = () => {
+      navigate(`/books/${bookId}/edit`); 
+    };
+
   return (
     <>
    <div className="details-page-container">
@@ -25,9 +43,11 @@ export default function Details() {
   </div>
 
   <div className="action-buttons">
-    <button className="edit-btn">Edit</button>
-    <button className="delete-btn">Delete</button>
-    <button className="favourite-btn">Favourite</button>
+    {isOwner ? ( <><button onClick={handleEditClick} className="edit-btn">Edit</button>
+                <button onClick={bookDeleteHandler}className="delete-btn">Delete</button></>) :
+
+                <button  className="favourite-btn">Favourite</button>
+     }
   </div>
 </div>
     </>
