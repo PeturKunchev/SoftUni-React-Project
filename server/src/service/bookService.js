@@ -16,5 +16,8 @@ export default {
     },
     delete(bookId) {
         return Book.findByIdAndDelete(bookId);
+    },
+    getLatest() {        
+        return Book.find().sort({createdAt: -1}).limit(3);
     }
 }

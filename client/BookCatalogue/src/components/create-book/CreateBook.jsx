@@ -32,7 +32,7 @@ export default function CreateBook() {
       setError("Please enter a valid year ");
       return;
     }
-    if (bookData.description.length < 2) {
+    if (bookData.description.length < 10) {
       setError("Description must be at least 10 characters long!");
       return;
     }

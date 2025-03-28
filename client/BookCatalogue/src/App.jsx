@@ -12,6 +12,7 @@ import Logout from './components/logout/Logout.jsx'
 import BookCatalog from './components/book-catalog/BookCatalog.jsx'
 import CreateBook from './components/create-book/CreateBook.jsx'
 import About from './components/about/About.jsx'
+import Details from './components/details/Details.jsx'
 
 function App() {
   const storedAuthData = JSON.parse(localStorage.getItem('authData')) || {};
@@ -36,8 +37,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/about" element={<About />} />
-            <Route path="/books/create" element={<CreateBook />} />
             <Route path="/books" element={<BookCatalog />} />
+            <Route path="/books/create" element={<CreateBook />} />
+            <Route path="/books/:bookId/details" element={<Details />} />
         </Routes>
       </main>
       <Footer/>

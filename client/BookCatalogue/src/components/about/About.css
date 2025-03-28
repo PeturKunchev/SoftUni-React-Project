@@ -6,6 +6,7 @@
     background: #7cb6e6;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border: black solid 1px;
   }
   
   .about-container h1 {

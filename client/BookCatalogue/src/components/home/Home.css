@@ -1,0 +1,29 @@
+.home-container {
+    width: 1300px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color:#7cb6e6;
+    border: black solid 1px;
+    border-radius: 20px;
+    padding-right: 50px;
+  }
+  
+  .home-container h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .home-container p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .books-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 70px;
+    margin-top: 20px;
+  }

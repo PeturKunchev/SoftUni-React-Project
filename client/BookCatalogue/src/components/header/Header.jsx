@@ -22,6 +22,7 @@ return (
                             <Link to="/login">Login</Link>
                             <Link to="/register">Register</Link>
                             </div>)}
+                            {email}
                         </div>
             </nav>
      </header>

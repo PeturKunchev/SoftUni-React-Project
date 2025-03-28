@@ -16,6 +16,11 @@ const bookController = Router();
 //     return filterResult
 // };
 
+//Get latest
+bookController.get('/latest', async (req,res)=>{
+    const latestBooks = await bookService.getLatest();
+    res.json(latestBooks);
+})
 // Get all
 bookController.get('/', async (req, res) => {
 
@@ -30,6 +35,8 @@ bookController.get('/:bookId', async (req, res) => {
 
     res.json(books);
 });
+
+
 
 // Create
 bookController.post('/', isAuth, async (req, res) => {
