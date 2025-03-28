@@ -15,7 +15,7 @@ return (
             LinkedIn
           </a>
         </div>
-        <p className="footer-text">© 2025 Your Company. All rights reserved.</p>
+        <p className="footer-text">© 2025 Book Catalogue. All rights reserved.</p>
       </div>
     </footer>
      </>

@@ -59,3 +59,17 @@ export const useDeleteBook = () => {
         deleteBook,
     }
 };
+
+export const useLatestBooks = () => {
+    const [latestBooks, setLatestBooks] = useState([]);
+    useEffect(()=>{
+        const searchParams = new URLSearchParams({
+            sortBy:'_createdOn desc',
+            pageSize: 3,
+            select: '_id,img,title'
+        });
+        requester.get(`${baseUrl}?${searchParams.toString()}`).then(setLatestBooks);
+    },[]);
+
+    return {latestBooks};
+}

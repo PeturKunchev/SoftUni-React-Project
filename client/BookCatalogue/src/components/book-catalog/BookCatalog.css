@@ -1,6 +1,8 @@
 /* Catalogue container */
 .catalogue-container {
     padding: 20px;
+    margin-bottom: 400px;
+    margin-right: 50px;
   }
   
   h2 {
