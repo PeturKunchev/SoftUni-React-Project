@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import User from "../models/User.js"
 import { generateToken } from '../utils/tokenUtils.js';
 import InvalidToken from '../models/InvalidToken.js';
+import mongoose from 'mongoose';
 
 export default {
     async register(userData) {
@@ -33,5 +34,23 @@ export default {
     },
     invalidateToken(token) {
         return InvalidToken.create({token});
+    },
+    async addToFavourites(userId,bookId){
+        const user = await User.findById(userId);
+        user.favourites.push(bookId);
+        await user.save();
+        return user;
+    },
+    async removeFromFavourites(userId,bookId){
+        const user = await User.findById(userId);
+        user.favourites = user.favourites.filter(id => id.toString() !== bookId);
+        await user.save();
+        return user;
+    },
+    async getFavourites(userId){
+        
+        const user = await User.findById(userId).populate('favourites'); 
+        
+        return user.favourites;
     }
 }

@@ -48,5 +48,25 @@ userController.get('/logout', async (req, res) => {
 
     res.json({});
 });
+userController.post('/favourites/add', async (req,res)=>{
+    const {userId, bookId} = req.body;
+    const user = await userService.addToFavourites(userId, bookId);
+        res.json({
+            favourites: user.favourites
+        });
+});
+userController.post('/favourites/remove' , async (req,res)=>{
+    const {userId, bookId} = req.body; 
+    const user = await userService.removeFromFavourites(userId, bookId);
+        res.json({
+            favourites: user.favourites
+        });
+});
+userController.get('/favourites/:userId', async (req,res)=>{
+    const {userId} = req.params;
 
+    
+    const favourites = await userService.getFavourites(userId);
+    res.json(favourites);
+})
 export default userController;

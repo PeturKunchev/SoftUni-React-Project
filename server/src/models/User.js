@@ -9,7 +9,11 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    favourites: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Book'
+    }]
 });
 
 userSchema.pre('save', async function () {
