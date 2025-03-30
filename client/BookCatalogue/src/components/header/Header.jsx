@@ -3,7 +3,7 @@ import './Header.css';
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext.js";
 export default function Header (){
-    const { email } = useContext(UserContext);    
+    const {_id, email } = useContext(UserContext);    
 return (
      <>
      <header className="header">
@@ -16,6 +16,7 @@ return (
                             <Link to="/books">All Books</Link>
                             {email ? (<div className="nav2">
                             <Link to="/books/create">Add Your Book</Link>
+                            <Link to={`/${_id}/profile`}>Profile</Link>
                             <Link to="/logout">Logout</Link>
                             </div>)
                             :(<div className="nav2">

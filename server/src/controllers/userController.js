@@ -26,9 +26,11 @@ userController.post('/register', async (req, res) => {
 
 userController.post('/login', async (req, res) => {
     const { email, password } = req.body;
+    
     try {
     const { user, token } = await userService.login(email, password)
-
+        
+        
     res.json({
         _id: user.id,
         accessToken: token,

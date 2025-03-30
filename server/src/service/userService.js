@@ -19,17 +19,21 @@ export default {
     },
     async login(email, password) {
         const user = await User.findOne({ email });
+        console.log(user);
+        
         if (!user) {
             throw new Error('Email or password are incorrect!');
         }
-
+       
+        
         const isValid = await bcrypt.compare(password, user.password);
+        
         if (!isValid) {
             throw new Error('Email or password are incorrect!');
         }
 
         const token = generateToken(user);
-
+        
         return { user, token };
     },
     invalidateToken(token) {
