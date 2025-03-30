@@ -4,9 +4,12 @@ import cors from 'cors';
 import routes from './routes.js';
 import { auth } from './middlewares/authMiddleware.js';
 import dotenv from 'dotenv';
-import path from 'path'
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+// Fix for __dirname in ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -18,7 +21,7 @@ try {
     
     await mongoose.connect(uri);
 
-    console.log('DB connected successfully! ');
+    console.log('DB connected successfully!');
 } catch (err) {
     console.log('Connection to DB failed!');
     console.log(err.message);
@@ -27,13 +30,16 @@ try {
 app.use(express.json());
 app.use(cors());
 app.use(auth);
-
-app.use(express.static(path.join(__dirname, '../client/BookCatalogue/dist')));
-
 app.use(routes);
 
+// ✅ Serve frontend build files
+const clientBuildPath = path.join(__dirname, '../client/BookCatalogue/dist');
+app.use(express.static(clientBuildPath));
+
+// ✅ Catch-all route to serve `index.html` for React Router
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve('../client/BookCatalogue/dist', 'index.html'));
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 
-app.listen(3030, () => console.log('RESTful server is running on http://localhost:3030...'))
+// ✅ Start the server
+app.listen(3030, () => console.log('RESTful server is running on http://localhost:3030...'));
