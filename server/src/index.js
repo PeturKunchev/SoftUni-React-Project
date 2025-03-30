@@ -4,6 +4,9 @@ import cors from 'cors';
 import routes from './routes.js';
 import { auth } from './middlewares/authMiddleware.js';
 import dotenv from 'dotenv';
+import path from 'path'
+
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 const app = express();
 
@@ -25,6 +28,12 @@ app.use(express.json());
 app.use(cors());
 app.use(auth);
 
+app.use(express.static(path.join(__dirname, 'client/BookCatalogue')));
+
 app.use(routes);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve('client', 'build', 'index.html'));
+});
 
 app.listen(3030, () => console.log('RESTful server is running on http://localhost:3030...'))
