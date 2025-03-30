@@ -9,8 +9,16 @@ export default function EditBook() {
   const {edit: editBook} = useEditBook();
   const [error, setError] = useState("");
   const {book} = useBook(bookId);
+
+  const authData = localStorage.getItem('authData');
+  const userId = authData ? JSON.parse(authData)._id : null;
+
+
 const editAction = async (formData) => {
     const bookData = Object.fromEntries(formData);
+    if (userId !== book._ownerId) {
+      navigate('/books')
+    }
     if (bookData.title.length < 2) {
       setError("Title must be at least 2 characters long!");
       return;

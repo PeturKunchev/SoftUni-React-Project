@@ -40,7 +40,9 @@ export default function Details() {
     console.log(isOwner);
     
     const bookDeleteHandler = async () => {
-      navigate(`/books`);;
+      if (!isOwner) {
+        return;
+      }
       const hasConfirm = confirm(`Are you sure?`);
       if (!hasConfirm) {
         return;
@@ -53,7 +55,7 @@ export default function Details() {
 
     const handleEditClick = () => {
       if (!isOwner) {
-        navigate(`/books`);;
+        return;
       }
       navigate(`/books/${bookId}/edit`); 
     };
