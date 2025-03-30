@@ -23,7 +23,7 @@ return (
                             <Link to="/login">Login</Link>
                             <Link to="/register">Register</Link>
                             </div>)}
-                            <h4 className="emailHolder">{email}</h4>
+                            <Link to={`/${_id}/profile`}><h4 className="emailHolder">{email}</h4></Link>
                         </div>
             </nav>
      </header>

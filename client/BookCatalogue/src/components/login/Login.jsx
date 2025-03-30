@@ -14,7 +14,7 @@ export default function Login() {
       });
     const [error, setError] = useState("");
     const loginHandler = async (formData) =>{
-        const {email,password} = Object.fromEntries(formData);
+    const {email,password} = Object.fromEntries(formData);
         
         
         setFormData({email,password});

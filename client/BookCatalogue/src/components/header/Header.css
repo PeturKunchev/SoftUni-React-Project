@@ -49,8 +49,9 @@ a:active {
     display: flex;
     flex-direction: row;
     gap: 80px;
+    margin-right: 400px;
 }
 .emailHolder{
     text-decoration: none;
-    margin-left: 400px;
+    
 }

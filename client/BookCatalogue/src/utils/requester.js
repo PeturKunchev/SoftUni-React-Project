@@ -16,19 +16,18 @@ const request = async (method, url, data, options = {}) => {
         }
 
         const response = await fetch(url, options);
-        
-        // Check for HTTP error responses (4xx, 5xx)
+
         if (!response.ok) {
             let errorData;
             try {
-                errorData = await response.json(); // Try parsing error message from backend
+                errorData = await response.json(); 
             } catch (parseError) {
                 errorData = { message: "Something went wrong!" };
             }
             throw { status: response.status, message: errorData.message || "Request failed" };
         }
 
-        // Handle cases where response is empty
+
         const responseContentType = response.headers.get('Content-Type');
         if (!responseContentType || !responseContentType.includes('application/json')) {
             return null;
@@ -38,7 +37,7 @@ const request = async (method, url, data, options = {}) => {
 
     } catch (error) {
         console.error("Network or API Error:", error);
-        throw error; // Rethrow so the calling function (like register) can handle it
+        throw error;
     }
 };
 

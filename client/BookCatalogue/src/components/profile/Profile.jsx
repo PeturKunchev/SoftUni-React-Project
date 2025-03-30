@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import './Profile.css'
 import { UserContext } from '../../contexts/UserContext';
-import { useFavourites, useRemoveFromFavourites } from '../../api/favouritesApi';
+import { useFavourites } from '../../api/favouritesApi';
 import { useBooks } from '../../api/booksApi';
-import BookCatalogueItem from '../book-catalog/book-catalog-item/BookCatalogItem';
 import { Link } from 'react-router';
 export default function Profile() {
 
