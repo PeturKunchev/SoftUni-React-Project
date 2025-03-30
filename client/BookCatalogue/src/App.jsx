@@ -39,12 +39,6 @@ function App() {
     checkBackend();
   },[])
 
-
-
-
-
-
-
   const storedAuthData = JSON.parse(localStorage.getItem('authData')) || {};
   const [authData,setAuthData] = useState(storedAuthData);
 
