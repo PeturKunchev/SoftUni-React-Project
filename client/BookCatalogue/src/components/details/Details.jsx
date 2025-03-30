@@ -33,6 +33,7 @@ export default function Details() {
     
       fetchFavourites();
     }, [userId, reload])
+    console.log(favouriteBooks);
     
     const isFavourited = favouriteBooks?.some(fav => fav._id === bookId);
     

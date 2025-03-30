@@ -5,7 +5,7 @@ import Header from './components/header/Header.jsx'
 import Home from './components/home/Home.jsx'
 import Register from './components/register/Register.jsx'
 import Login from './components/login/Login.jsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { UserContext } from './contexts/UserContext.js'
 import Logout from './components/logout/Logout.jsx'
 
@@ -18,8 +18,33 @@ import Profile from './components/profile/Profile.jsx'
 import ProtectedRoute from './utils/ProtectedRoute.jsx'
 import ProtectedRouteLoggedIn from './utils/ProtectedRouteLoggedIn.jsx'
 import Error from './components/error/Error.jsx'
+import Loader from './components/loader/Loader.jsx'
 
 function App() {
+
+  const [loading,setLoading] = useState(true);
+
+  useEffect(()=>{
+    const checkBackend = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/books`);
+        if (response.ok) {
+          setLoading(false); 
+        }
+      } catch (error) {
+        console.error("Backend is still waking up...");
+      }
+    };
+
+    checkBackend();
+  },[])
+
+
+
+
+
+
+
   const storedAuthData = JSON.parse(localStorage.getItem('authData')) || {};
   const [authData,setAuthData] = useState(storedAuthData);
 
@@ -30,6 +55,10 @@ function App() {
   const userLogoutHandler = () =>{
     setAuthData({});
     localStorage.removeItem('authData')
+  }
+
+  if (loading) {
+    return <Loader />; 
   }
   return (
     <>
