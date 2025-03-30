@@ -18,6 +18,9 @@ export default function Details() {
 
     const authData = localStorage.getItem('authData');
     const userId = authData ? JSON.parse(authData)._id : null;
+    console.log(userId);
+    console.log(book._ownerId);
+    
     
     useEffect(() => {
       const fetchFavourites = async () => {
