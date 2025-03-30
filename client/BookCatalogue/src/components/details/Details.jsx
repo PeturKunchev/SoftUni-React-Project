@@ -21,6 +21,9 @@ export default function Details() {
     
     useEffect(() => {
       const fetchFavourites = async () => {
+        if (!userId) {
+          return
+        }
         const fetchedFavourites = await getFavourites(userId);
         setFavouriteBooks(fetchedFavourites);
       };
@@ -31,7 +34,11 @@ export default function Details() {
     const isFavourited = favouriteBooks?.some(fav => fav._id === bookId);
     
     let isOwner = userId === book._ownerId;
+
     const bookDeleteHandler = async () => {
+      if (!isOwner) {
+        return;
+      }
       const hasConfirm = confirm(`Are you sure?`);
       if (!hasConfirm) {
         return;
@@ -43,13 +50,22 @@ export default function Details() {
     }
 
     const handleEditClick = () => {
+      if (!isOwner) {
+        return;
+      }
       navigate(`/books/${bookId}/edit`); 
     };
     const handleFavouriteClick = async () => {
+      if (!userId) {
+        return
+      }
       await addToFavourites(userId,bookId);
       setReload(prev => !prev);
     }
     const handleUnfavouriteClick = async () => {
+      if (!userId) {
+        return
+      }
       await removeFromFavourites(userId, bookId);
       setReload(prev => !prev);
     }
@@ -72,22 +88,20 @@ export default function Details() {
   </div>
 
   <div className="action-buttons">
-    {isOwner ? (
-        <>
-            <button onClick={handleEditClick} className="edit-btn">Edit</button>
-            <button onClick={bookDeleteHandler} className="delete-btn">Delete</button>
-        </>
-    ) : (
+  {isOwner ? (
+    <>
+        <button onClick={handleEditClick} className="edit-btn">Edit</button>
+        <button onClick={bookDeleteHandler} className="delete-btn">Delete</button>
+    </>
+) : (
+    userId !== null && (
         isFavourited ? (
-            <>
-                <button onClick={handleUnfavouriteClick} className="favourite-btn">Unfavourite</button>
-            </>
+            <button onClick={handleUnfavouriteClick} className="favourite-btn">Unfavourite</button>
         ) : (
-            <>
-                <button onClick={handleFavouriteClick} className="favourite-btn">Favourite</button>
-            </>
+            <button onClick={handleFavouriteClick} className="favourite-btn">Favourite</button>
         )
-    )}
+    )
+)}
 </div>
 </div>
     </>
