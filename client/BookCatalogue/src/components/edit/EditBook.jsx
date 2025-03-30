@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { useBook, useEditBook } from "../../api/booksApi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function EditBook() {
   const { bookId } = useParams();
@@ -13,12 +13,14 @@ export default function EditBook() {
   const authData = localStorage.getItem('authData');
   const userId = authData ? JSON.parse(authData)._id : null;
 
-
-const editAction = async (formData) => {
-    const bookData = Object.fromEntries(formData);
-    if (userId !== book._ownerId) {
+  useEffect(() => {
+    if(userId !== book._ownerId){
       navigate('/books')
     }
+  }, [userId, book._ownerId])
+const editAction = async (formData) => {
+    const bookData = Object.fromEntries(formData);
+    
     if (bookData.title.length < 2) {
       setError("Title must be at least 2 characters long!");
       return;
