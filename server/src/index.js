@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'client/BookCatalogue')));
 app.use(routes);
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve('client', 'build', 'index.html'));
+    res.sendFile(path.resolve('client', 'BookCatalogue', 'index.html'));
 });
 
 app.listen(3030, () => console.log('RESTful server is running on http://localhost:3030...'))
