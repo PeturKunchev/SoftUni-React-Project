@@ -42,7 +42,6 @@ export default function CreateBook() {
     }
     
     await createBook(bookData);
-    // console.log(bookData);
 
     navigate('/books');
   }

@@ -23,7 +23,7 @@ return (
                             <Link to="/login">Login</Link>
                             <Link to="/register">Register</Link>
                             </div>)}
-                            {email}
+                            <h4 className="emailHolder">{email}</h4>
                         </div>
             </nav>
      </header>

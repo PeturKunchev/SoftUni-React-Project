@@ -21,12 +21,17 @@
   .headerText {
     font-size: 28px;
     font-weight: bold;
-    color: #333; /* Dark gray for readability */
+    color: white;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 20px;
     position: relative;
+    background-color: #07315a;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: solid black 2px;
+    border-radius: 10px;
   }
   
   .headerText::after {
@@ -34,7 +39,7 @@
     display: block;
     width: 60px;
     height: 4px;
-    background-color: #007bff; /* Blue underline */
+    background-color: #ffffff; /* Blue underline */
     margin: 8px auto 0;
     border-radius: 2px;
   }

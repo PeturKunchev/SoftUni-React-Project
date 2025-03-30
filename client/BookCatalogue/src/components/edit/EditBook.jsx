@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export default function EditBook() {
   const { bookId } = useParams();
-  console.log(bookId);
   
   const navigate = useNavigate();
   const {edit: editBook} = useEditBook();
