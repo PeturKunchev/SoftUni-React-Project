@@ -28,12 +28,12 @@ app.use(express.json());
 app.use(cors());
 app.use(auth);
 
-app.use(express.static(path.join(__dirname, 'client/BookCatalogue')));
+app.use(express.static(path.join(__dirname, '../client/BookCatalogue/dist')));
 
 app.use(routes);
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve('client', 'BookCatalogue','build', 'index.html'));
+    res.sendFile(path.resolve('../client/BookCatalogue/dist', 'index.html'));
 });
 
 app.listen(3030, () => console.log('RESTful server is running on http://localhost:3030...'))
