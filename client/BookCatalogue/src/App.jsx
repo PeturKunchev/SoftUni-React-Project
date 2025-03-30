@@ -15,6 +15,9 @@ import About from './components/about/About.jsx'
 import Details from './components/details/Details.jsx'
 import EditBook from './components/edit/EditBook.jsx'
 import Profile from './components/profile/Profile.jsx'
+import ProtectedRoute from './utils/ProtectedRoute.jsx'
+import ProtectedRouteLoggedIn from './utils/ProtectedRouteLoggedIn.jsx'
+import Error from './components/error/Error.jsx'
 
 function App() {
   const storedAuthData = JSON.parse(localStorage.getItem('authData')) || {};
@@ -35,15 +38,23 @@ function App() {
       <main>
         <Routes>
             <Route index element={<Home />} />
+
+            <Route element={<ProtectedRouteLoggedIn/>}>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            </Route>
+
+            <Route element={<ProtectedRoute/>}>
             <Route path="/:userId/profile" element={<Profile />} />
             <Route path="/logout" element={<Logout />} />
+            </Route>
+
             <Route path="/about" element={<About />} />
             <Route path="/books" element={<BookCatalog />} />
             <Route path="/books/create" element={<CreateBook />} />
             <Route path="/books/:bookId/edit" element={<EditBook />} />
             <Route path="/books/:bookId/details" element={<Details />} />
+            <Route path='*' element = {<Error/>} />
         </Routes>
       </main>
       <Footer/>
