@@ -36,8 +36,7 @@ export default function Details() {
     
     const isFavourited = favouriteBooks?.some(fav => fav._id === bookId);
     
-    let isOwner = userId === book._ownerId;
-
+    const isOwner = book?._ownerId && userId === book._ownerId;
     const bookDeleteHandler = async () => {
       if (!isOwner) {
         return;
