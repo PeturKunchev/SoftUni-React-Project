@@ -12,9 +12,11 @@ export default function EditBook() {
 
   const authData = localStorage.getItem('authData');
   const userId = authData ? JSON.parse(authData)._id : null;
-
+  console.log(userId);
+  console.log(book._ownerId);
+  
   useEffect(() => {
-    if (!book || !userId) {
+    if (book._ownerId === undefined) {
       return;
     }
     if(userId !== book._ownerId){
