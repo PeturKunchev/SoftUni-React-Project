@@ -14,15 +14,15 @@ return (
                             <h1><Link to="/"><img className="logo"src="/bookLogo.png" alt="Logo" /></Link></h1>
                             <Link to="/about">About</Link>
                             <Link to="/books">All Books</Link>
-                            {email ? (<div className="nav2">
+                            {email ? (<>
                             <Link to="/books/create">Add Your Book</Link>
                             <Link to={`/${_id}/profile`}>Profile</Link>
                             <Link to="/logout">Logout</Link>
-                            </div>)
-                            :(<div className="nav2">
+                            </>)
+                            :(<>
                             <Link to="/login">Login</Link>
                             <Link to="/register">Register</Link>
-                            </div>)}
+                            </>)}
                             <Link to={`/${_id}/profile`}><h4 className="emailHolder">{email}</h4></Link>
                         </div>
             </nav>

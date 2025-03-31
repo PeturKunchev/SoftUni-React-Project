@@ -22,8 +22,7 @@ header {
     flex-direction: row;
     color: white;
     align-items: center;
-    justify-content: space-between;  
-    flex-wrap: wrap; 
+    gap: 70px;
     margin-right: 6%;
   }
   
@@ -35,16 +34,11 @@ header {
   .nav a:hover {
     color: rgba(255, 255, 255, 0.622);
   }
-  
-  .nav2 {
-    display: flex;
-    flex-direction: row;
-    gap: 80px;
-    margin-right: 400px;
-  }
+
   
   .emailHolder {
     text-decoration: none;
+    margin-left: 100%;
   }
   
   @media (max-width: 768px) {
@@ -71,7 +65,7 @@ header {
     }
   
     .nav2 {
-      margin-right: 0;
+      margin-right: 30%;
       flex-direction: column;
       gap: 20px;
     }
