@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router'
 import './CreateBook.css'
 import { useCreateBook } from '../../api/booksApi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function CreateBook() {
   const navigate = useNavigate();
@@ -16,7 +16,14 @@ export default function CreateBook() {
     img: "",
     language: "",
 });
+const authData = localStorage.getItem('authData');
+console.log(authData);
 
+  useEffect(() => {
+    if (!authData) {
+      navigate('/books');
+    }
+  }, [authData])
   const createAction = async (formData) => {
     const bookData = Object.fromEntries(formData);
     setFormData(bookData);
