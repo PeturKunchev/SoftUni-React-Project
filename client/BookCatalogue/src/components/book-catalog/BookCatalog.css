@@ -45,3 +45,22 @@
     margin: 8px auto 0;
     border-radius: 2px;
   }
+  .no-books{
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: #07315a;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid black 2px;
+    border-radius: 10px;
+    margin-left: 4%;
+    margin-right: 4%;
+  }
