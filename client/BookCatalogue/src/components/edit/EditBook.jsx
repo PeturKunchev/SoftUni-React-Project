@@ -14,7 +14,7 @@ export default function EditBook() {
   const userId = authData ? JSON.parse(authData)._id : null;
 
   useEffect(() => {
-    if (!book || userId) {
+    if (!book || !userId) {
       return;
     }
     if(userId !== book._ownerId){
