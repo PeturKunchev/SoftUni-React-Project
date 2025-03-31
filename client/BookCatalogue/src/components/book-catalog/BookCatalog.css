@@ -2,7 +2,7 @@
 .catalogue-container {
     padding: 20px;
     margin-bottom: 400px;
-    margin-right: 50px;
+    margin-right: 4%;
   }
   
   h2 {
@@ -16,7 +16,7 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 70px;
     justify-items: center;
-    margin-left: 50px;
+    margin-left: 4%;
   }
   .headerText {
     font-size: 28px;
@@ -32,6 +32,8 @@
     padding-bottom: 20px;
     border: solid black 2px;
     border-radius: 10px;
+    margin-left: 4%;
+    margin-right: 4%;
   }
   
   .headerText::after {

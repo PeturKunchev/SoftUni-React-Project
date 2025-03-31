@@ -7,8 +7,8 @@ export default function BookCatalog() {
   
   return (
     <>
+  <h2 className="headerText">Catalogue</h2>
     <div className="catalogue-container">
-      <h2 className="headerText">Catalogue</h2>
       <div className="book-list">
           {books.length > 0 ? books.map(book => <BookCatalogueItem key = {book._id} {...book}/>):<h3>No books yet...</h3>}
       </div>
