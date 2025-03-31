@@ -4,20 +4,23 @@ import { useEffect, useState } from "react";
 
 export default function EditBook() {
   const { bookId } = useParams();
-  
+  const {book} = useBook(bookId);
   const navigate = useNavigate();
   const {edit: editBook} = useEditBook();
   const [error, setError] = useState("");
-  const {book} = useBook(bookId);
+
 
   const authData = localStorage.getItem('authData');
   const userId = authData ? JSON.parse(authData)._id : null;
 
   useEffect(() => {
+    if (!book || userId) {
+      return;
+    }
     if(userId !== book._ownerId){
       navigate('/books')
     }
-  }, [userId, book._ownerId])
+  }, [userId, book])
 const editAction = async (formData) => {
     const bookData = Object.fromEntries(formData);
     

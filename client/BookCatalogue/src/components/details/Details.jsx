@@ -18,8 +18,6 @@ export default function Details() {
 
     const authData = localStorage.getItem('authData');
     const userId = authData ? JSON.parse(authData)._id : null;
-    console.log(userId);
-    console.log(book._ownerId);
     
     
     useEffect(() => {
@@ -33,12 +31,10 @@ export default function Details() {
     
       fetchFavourites();
     }, [userId, reload])
-    console.log(favouriteBooks);
     
     const isFavourited = favouriteBooks?.some(fav => fav._id === bookId);
     
     const isOwner = book?._ownerId && userId === book._ownerId;
-    console.log(isOwner);
     
     const bookDeleteHandler = async () => {
       if (!isOwner) {
